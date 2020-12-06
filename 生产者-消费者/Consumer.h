@@ -19,6 +19,7 @@ class Consumer :public RunableThread
 			while (1)
 			{
 				bf->Read(buffer, 20);
+				printf("%s\n", buffer);
 				if (0 == strcmp(buffer, "exit"))
 					break;		// µÈ´ı¿ØÖÆ×Ö·û½áÊø
 				fprintf(fp, "Consumer Received: %s\n", buffer);
