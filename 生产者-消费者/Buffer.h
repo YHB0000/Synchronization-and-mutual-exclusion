@@ -115,6 +115,7 @@ public:
 			mutexUse[i] = CreateSemaphore(NULL, 0, 1, NULL);		// ≥ı÷µ 0
 			mutexUnUse[i] = CreateSemaphore(NULL, 1, 1, NULL);		// ≥ı÷µ 1
 		}
+		std::cout << "Init "<< bufferNumber <<" buffers each with " << bufferSize << " size" << std::endl;
 		return 0;
 	}
 	// ∂¡≤Ÿ◊˜

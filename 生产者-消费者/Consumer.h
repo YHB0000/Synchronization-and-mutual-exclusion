@@ -12,9 +12,9 @@ class Consumer :public RunableThread
 		Buffer* bf;
 		FILE* fp;
 	protected:
-		virtual unsigned Execue()
+		unsigned Execue()
 		{
-			//std::cout << "Consumer Execue()" << std::endl;
+			std::cout << "Consumer Execue()" << std::endl;
 			char buffer[20];
 			while (1)
 			{

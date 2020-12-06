@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+#include<iostream>
 #include "RunableThread.h"
 #include "Buffer.h"
 #ifndef Producer_h
@@ -11,12 +12,16 @@ private:
 	Buffer* bf;
 	FILE* fp;
 protected:
-	virtual unsigned Execue()
+	unsigned Execue()
 	{
-		//std::cout << "Producer Execue()" << std::endl;
+		std::cout << "Producer Execue()" << std::endl;
 		char buffer[20];
-		// 将文件内部的 位置指针 重新指向一个流（ 数据流/文件）的开头
-		rewind(this->fp);
+		// 将文件内部的 位置指针 重新指向一个流（数据流/文件）的开头
+		if (fp == NULL)
+		{
+			return 0;
+		}
+		//rewind(fp);
 		while (NULL != fgets(buffer, 20, fp))
 		{
 			bf->Write(buffer, 20);
@@ -33,6 +38,7 @@ public:
 		Buffer* hold = this->bf = bf;
 		this->bf = bf;
 		this->fp = fp;
+		std::cout << "*fp: " << fp << std::endl;
 		return hold;
 	}
 };
