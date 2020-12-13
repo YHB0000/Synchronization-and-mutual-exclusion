@@ -39,53 +39,55 @@ public:
 	{
 		int timer = INFINITE;
 		if (time >= 0)
-		{
 			timer = time;
 
-			// WaitForSingleObject 函数用来检测 hHandle 事件的信号状态
-			// 当函数的执行时间超过 dwMilliseconds 就返回
-			// 但如果参数 dwMilliseconds 为 INFINITE 时函数将直到相应时间时间变成信号状态才返回，
-			// 否则就一直等待下去，直到 WaitForSingleObject 有返回值才执行后面的代码
+		// WaitForSingleObject 函数用来检测 hHandle 事件的信号状态
+		// 当函数的执行时间超过 dwMilliseconds 就返回
+		// 但如果参数 dwMilliseconds 为 INFINITE 时函数将直到相应时间时间变成信号状态才返回，
+		// 否则就一直等待下去，直到 WaitForSingleObject 有返回值才执行后面的代码
 
-			WaitForSingleObject(mut, INFINITE);
-			WaitForSingleObject(sem, INFINITE);
+		WaitForSingleObject(mut, INFINITE);
+		WaitForSingleObject(sem, INFINITE);
 
-			WaitForSingleObject(write, 0);	// 位置返回
+		WaitForSingleObject(write, 0);	// 位置返回
 
-			// 读者进程 +1
-			rCounter += 1;
+		// 读者进程 +1
+		rCounter += 1;
 
-			// 释放临界资源
-			ReleaseSemaphore(sem, 1, NULL);
-			ReleaseSemaphore(mut, 1, NULL);
+		// 释放临界资源
+		ReleaseSemaphore(sem, 1, NULL);
+		ReleaseSemaphore(mut, 1, NULL);
 
-			return rCounter;
-		}
+		return rCounter;
 	}
 	// 写锁函数
 	int WriteLock(int time = INFINITE) // -1 表示 INFINITE
 	{
 		int timer = INFINITE;
 		if (time >= 0)
-		{
 			timer = time;
 
-			WaitForSingleObject(mut, INFINITE);
-			WaitForSingleObject(write, INFINITE);
+		WaitForSingleObject(mut, INFINITE);
+		WaitForSingleObject(write, INFINITE);
 
-			rCounter += 1;
+		wCounter += 1;
 
-			return rCounter;
-		}
+		return wCounter;
 	}
 	// 读者释放锁
 	int ReadUnlock()
 	{
+		ReleaseSemaphore(write, 1, NULL);
 		return 0;
 	}
 	// 只允许一个 writer，所以 writer 退出时，释放临界资源，可读可写
 	int WriteUnlock()
 	{
+
+		// 释放临界资源
+		ReleaseSemaphore(write, 1, NULL);
+		ReleaseSemaphore(mut, 1, NULL);
+
 		return 0;
 	}
 };

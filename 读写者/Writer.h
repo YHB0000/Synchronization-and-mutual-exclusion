@@ -21,11 +21,11 @@ protected:
 			return 0;
 		srand(time(0));
 
-		int readerCon = lock->WriteLock(-1);
+		int writerCon = lock->WriteLock(-1);
 		Sleep(rand() % 100);
 
 		*buffer += 1;
-		std::cout << "Write: buffer=" << *buffer << ".\n";
+		std::cout << "Write" << writerCon << " : buffer=" << *buffer << ".\n";
 
 		Sleep(rand() % 100);
 		lock->WriteUnlock();
