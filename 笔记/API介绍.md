@@ -45,6 +45,24 @@ stdcall的调用约定意味着：
 
 
 
+# srand()
+
+​	srand 函数是随机数发生器的初始化函数
+
+​	原型：void srand(unsigned int seed);
+
+​	srand 和 rand() 配合使用产生伪随机数序列
+
+​	srand()用来设置rand()产生随机数时的随机数种子。参数seed必须是个整数，通常可以利用**time(0)**的返回值或NULL来当做seed。如果每次seed都设相同值，rand()所产生的随机数值每次就会一样。
+
+
+
+# Sleep()
+
+​	windows C语言中单位是毫秒（ms），暂停后，然后继续向下执行
+
+
+
 # _beginthread _beginthreadex
 
 ​	process.h
