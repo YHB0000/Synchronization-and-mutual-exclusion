@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "生产者-消费者", "生�
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "读写者", "读写者\读写者.vcxproj", "{59D43C71-A38D-4303-A7EE-0B8B2DA4D2F4}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "哲学家就餐", "哲学家就餐\哲学家就餐.vcxproj", "{F5230498-FEB3-4127-BB6B-7DC95C30CA59}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{59D43C71-A38D-4303-A7EE-0B8B2DA4D2F4}.Release|x64.Build.0 = Release|x64
 		{59D43C71-A38D-4303-A7EE-0B8B2DA4D2F4}.Release|x86.ActiveCfg = Release|Win32
 		{59D43C71-A38D-4303-A7EE-0B8B2DA4D2F4}.Release|x86.Build.0 = Release|Win32
+		{F5230498-FEB3-4127-BB6B-7DC95C30CA59}.Debug|x64.ActiveCfg = Debug|x64
+		{F5230498-FEB3-4127-BB6B-7DC95C30CA59}.Debug|x64.Build.0 = Debug|x64
+		{F5230498-FEB3-4127-BB6B-7DC95C30CA59}.Debug|x86.ActiveCfg = Debug|Win32
+		{F5230498-FEB3-4127-BB6B-7DC95C30CA59}.Debug|x86.Build.0 = Debug|Win32
+		{F5230498-FEB3-4127-BB6B-7DC95C30CA59}.Release|x64.ActiveCfg = Release|x64
+		{F5230498-FEB3-4127-BB6B-7DC95C30CA59}.Release|x64.Build.0 = Release|x64
+		{F5230498-FEB3-4127-BB6B-7DC95C30CA59}.Release|x86.ActiveCfg = Release|Win32
+		{F5230498-FEB3-4127-BB6B-7DC95C30CA59}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

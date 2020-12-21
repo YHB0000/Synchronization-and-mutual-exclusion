@@ -55,7 +55,7 @@ void main()
 		}
 	}
 	WaitForMultipleObjects(25, wrhs, TRUE, INFINITE);
-	WaitForMultipleObjects(600, wrhs, TRUE, INFINITE);
+	WaitForMultipleObjects(600, rehs, TRUE, INFINITE);
 
 	_getch();
 }
