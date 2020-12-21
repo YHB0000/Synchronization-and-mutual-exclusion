@@ -15,17 +15,24 @@ int main()
 
 	Chopstick ch;
 	Philosopher ph[5];
-	HANDLE phhs[5] = { NULL };
+	HANDLE phhs[25] = { NULL };
 
 	srand(time(0));
-	for (int i = 0; i < 5; i++)
+	for (int j = 0; j < 5; j++)
 	{
-		ph[i].Init(&ch);
-		phhs[i] = ph[i].Start();
-		Sleep(rand() % 100);
+		Sleep(rand() % 200);
+		cout << endl;
+		cout << "---------- The " << j+1 << " day -----------" << endl;
+		for (int i = 0; i < 5; i++)
+		{
+			ph[i].Init(&ch, i + 1);
+			phhs[i] = ph[i].Start();
+		}
+		cout << endl;
+		Sleep(rand() % 1000);
 	}
 
-	WaitForMultipleObjects(5, phhs, TRUE, INFINITY);
+	WaitForMultipleObjects(25, phhs, TRUE, INFINITY);
 
 	return 0;
 

@@ -11,32 +11,29 @@ class Philosopher : public RunableThread
 {
 private:
 	Chopstick* Chop;
+	int number;
 
 protected:
 	unsigned Execue()
 	{
 		int phnum;
+		srand(time(0));
 		while (1)
 		{
-			srand(time(0));
-			/*if (rand() % 2 == 0)
-			{*/
+			if (rand() % 2 == 0)
+			{
 				Sleep(rand() % 100);
-				std::cout << "The philosopher is thinking" << std::endl;
-			//}
-			//else {
-				Sleep(rand() % 100);
+				std::cout << "The " << this->number << " philosopher is thinking" << std::endl;
+			}
+			else {
 				phnum = Chop->takeright();
-				std::cout << "The " << phnum << " philosopher take one Chopstick." << std::endl;
-				//Sleep(rand() % 100);
+				std::cout << "The " << this->number << " philosopher take one Chopstick." << std::endl;
 				Chop->takeleft();
-				std::cout << "The " << phnum << " philosopher is eating." << std::endl;
-				//Sleep(rand() % 100);
+				std::cout << "The " << this->number << " philosopher is eating." << std::endl;
 				Chop->finish();
 				return 0;
-			//}
+			}
 		}
-		//return 0;
 	}
 public:
 	Philosopher(Chopstick* Chop)
@@ -49,10 +46,11 @@ public:
 		this->Chop = NULL;
 	}
 
-	HANDLE Init(Chopstick* Chop)
+	HANDLE Init(Chopstick* Chop, int number)
 	{
 		HANDLE hold = this->Chop;
 		this->Chop = Chop;
+		this->number = number;
 		return hold;
 	}
 };
