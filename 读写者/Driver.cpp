@@ -13,7 +13,7 @@
 // 本程序将演示互斥读写的重要性以及不加控制地向输出流中进行输出导致的输出序列混乱
 void main()
 {
-	RwLock lock1;
+	RwLock lock;
 
 	Reader re[600];
 	Writer wr[25];
@@ -32,23 +32,23 @@ void main()
 		{
 			if (j < 25)
 			{
-				wr[j].Init(&lock1, &buffer);
+				wr[j].Init(&lock, &buffer);
 				wrhs[j] = wr[j].Start();
 				j += 1;
 			} else {
-				re[k].Init(&lock1, &buffer);
+				re[k].Init(&lock, &buffer);
 				rehs[k] = re[k].Start();
 				k += 1;
 			}
 		} else {
 			if (k < 600)
 			{
-				re[k].Init(&lock1, &buffer);
+				re[k].Init(&lock, &buffer);
 				rehs[k] = re[k].Start();
 				k += 1;
 			} else
 			{
-				wr[j].Init(&lock1, &buffer);
+				wr[j].Init(&lock, &buffer);
 				wrhs[j] = wr[j].Start();
 				j += 1;
 			}

@@ -3,6 +3,7 @@
 #include<iostream>
 #include<conio.h>
 #include<process.h>
+#include<time.h>
 #include "RunableThread.h"
 #include "Buffer.h"
 #include "Producer.h"
@@ -23,6 +24,7 @@ int main(int argc, char* argv[])
 	FILE* fps[4] = { NULL };	// 4 个 producer 文件结构
 	FILE* fpc[8] = { NULL };	// 8 个 consumer 文件结构
 	char End[] = "exit";
+	srand(time(0));
 
 	// 初始化
 	char commonBuffer[100] = {'\0'};
@@ -45,7 +47,8 @@ int main(int argc, char* argv[])
 	{
 		sprintf(commonBuffer, "consumer%d.txt", i);
 		fpc[i] = fopen(commonBuffer, "w+");			// 写 buffer
-		cout << "consumer" << i << " is created and push in the fpc[" << i << "]" << endl;
+		fprintf(fpc[i], "consumer %d is created and push in the fpc[ %d ]\n", i, i);
+		//cout << "consumer" << i << " is created and push in the fpc[" << i << "]" << endl;
 	}
 
 	// 初始化 3 个缓冲区， 大小为 30
@@ -62,7 +65,7 @@ int main(int argc, char* argv[])
 	for (i = 0; i < 4; i++)
 	{
 		cout << "ps[" << i << "] Init" << endl;
-		ps[i].Init(&b3, fps[i]);
+		ps[i].Init(&b3, fps[i], i);
 	}
 
 	// 创建 8 个 消费者 线程
@@ -86,10 +89,12 @@ int main(int argc, char* argv[])
 		fclose(fps[i]);
 	}
 
+	Sleep(rand() % 1000);
 	// 建议在此设置断点进行调试
 	for (i = 0; i < 8; i++)
 	{
 		b3.Write(End, strlen("exit"));
+		Sleep(rand() % 100);
 	}
 
 	// 等待 消费者 结束

@@ -119,7 +119,7 @@ public:
 		return 0;
 	}
 	// 读操作
-	int Read(char* recBuffer, int recBufferLen)
+	char* Read(char* recBuffer, int recBufferLen)
 	{
 		// 等待一个已经填充的槽（初始化后共 3 个槽）
 		// 等待 读信号量创建完成 （可视为 P 操作过程）
@@ -140,7 +140,7 @@ public:
 		}
 		recBuffer[i] = '\0';
 		ReleaseSemaphore(mutexUnUse[slot], 1, NULL);	// 将槽的状态设置为可用 （空）
-		return i;
+		return recBuffer;
 	}
 	// 写操作
 	int Write(char* inBuffer, int inBufferLen)

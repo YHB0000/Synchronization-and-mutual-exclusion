@@ -1,0 +1,3 @@
+consumer 7 is created and push in the fpc[ 7 ]
+Consumer Received: бл!@#$%^&*()_+-=,
+Consumer Received: exit

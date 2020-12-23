@@ -148,6 +148,14 @@
     <ClInclude Include="RunableThread.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="consumer0.txt" />
+    <Text Include="consumer1.txt" />
+    <Text Include="consumer2.txt" />
+    <Text Include="consumer3.txt" />
+    <Text Include="consumer4.txt" />
+    <Text Include="consumer5.txt" />
+    <Text Include="consumer6.txt" />
+    <Text Include="consumer7.txt" />
     <Text Include="source0.txt" />
     <Text Include="source1.txt" />
     <Text Include="source2.txt" />

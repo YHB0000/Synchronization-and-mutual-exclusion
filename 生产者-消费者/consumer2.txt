@@ -1,0 +1,3 @@
+consumer 2 is created and push in the fpc[ 2 ]
+Consumer Received: 0123456789
+Consumer Received: exit

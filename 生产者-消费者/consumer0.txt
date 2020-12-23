@@ -1,0 +1,4 @@
+consumer 0 is created and push in the fpc[ 0 ]
+Consumer Received: ABCDEFGHIJKLMNOPQRS
+Consumer Received: n
+Consumer Received: exit

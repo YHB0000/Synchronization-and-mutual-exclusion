@@ -11,17 +11,16 @@ class Producer :public RunableThread
 private:
 	Buffer* bf;
 	FILE* fp;
+	int number;
 protected:
 	unsigned Execue()
 	{
 		std::cout << "Producer Execue()" << std::endl;
 		char buffer[20];
 		// 将文件内部的 位置指针 重新指向一个流（数据流/文件）的开头
-		if (fp == NULL)
-		{
-			return 0;
-		}
 		//rewind(fp);
+		sprintf(buffer, "source%d.txt", number);
+		fp = fopen(buffer, "r");
 		while (NULL != fgets(buffer, 20, fp))
 		{
 			bf->Write(buffer, 20);
@@ -33,12 +32,12 @@ public:
 	{
 		this->bf = NULL;
 	}
-	Buffer* Init(Buffer* bf, FILE* fp)
+	Buffer* Init(Buffer* bf, FILE* fp, int i)
 	{
 		Buffer* hold = this->bf = bf;
+		this->number = i;
 		this->bf = bf;
 		this->fp = fp;
-		std::cout << "*fp: " << fp << std::endl;
 		return hold;
 	}
 };
